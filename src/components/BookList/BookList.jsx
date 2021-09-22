@@ -8,7 +8,8 @@ function BookList() {
       <h2>All Books</h2>
       <ul>
         {bookList.map((book, index) => 
-          <li key={index}>{book.title} by {book.author}</li>  
+          <li key={index}>{book.title} by {book.author}
+          </li>  
         )}
       </ul>
     </section>
