@@ -1,28 +1,43 @@
 import {useState} from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function BookForm() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
 
+    
     console.log(`Adding book`, {title, author});
 
-    // TODO - axios request to server to add book
-  
-    axios({
-      method: 'POST',
-      url: '/books',
-      data: {
+    // Send data to Redux
+    dispatch({
+      type: 'SET_NEW_BOOK',
+      payload: {
         title: title,
         author: author,
       }
-    }).then (response => {
+    });
+    history.push('/confirm');
+
+    // TODO - axios request to server to add book
+  
+  //   axios({
+  //     method: 'POST',
+  //     url: '/books',
+  //     data: {
+  //       title: title,
+  //       author: author,
+  //     }
+  //   }).then (response => {
     
-    })
-  };
+  //   })
+  // };
 
   return (
     <section>
@@ -49,5 +64,7 @@ function BookForm() {
     </section>
   );
 }
+
+
 
 export default BookForm;

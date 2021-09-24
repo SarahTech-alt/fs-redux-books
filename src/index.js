@@ -7,6 +7,16 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
+const defaultBook = {title: '', author:''};
+const bookToAdd = (state = defaultBook, action) => {
+  if(action.type === 'SET_NEW_BOOK') {
+    return action.payload;
+  } else if (action.type === 'SET_NEW_BOOK'){
+    return action.payload;
+  }
+}
+// {...state, title: action.payload.title}
+// {...state, ...action.payload}
 
 const bookList = (state = [], action) => {
   if (action.type === 'SET_BOOK_LIST'){
@@ -18,7 +28,8 @@ const bookList = (state = [], action) => {
 
 const reduxStore = createStore(
   combineReducers({
-    bookList
+    bookList,
+    bookToAdd
   }),
   applyMiddleware(logger)
 );
