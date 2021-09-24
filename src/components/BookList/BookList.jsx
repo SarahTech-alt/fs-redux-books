@@ -1,4 +1,5 @@
 import {useSelector} from 'react-redux'
+import { Link } from 'react-router-dom';
 
 function BookList() {
   const bookList = useSelector(store => store.bookList);
@@ -7,6 +8,7 @@ function BookList() {
   return (
     <section>
       <h2>All Books</h2>
+      <Link to='/add'>Add a Book</Link>
       <ul>
         {bookList.map((book, index) => 
           <li key={index}>{book.title} by {book.author}
