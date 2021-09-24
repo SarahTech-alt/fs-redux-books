@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 
-function BookForm({ fetchBookList }) {
+function BookForm() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -20,10 +20,8 @@ function BookForm({ fetchBookList }) {
         author: author,
       }
     }).then (response => {
-      // GET BOOK LIST
-      fetchBookList();
+    
     })
-
   };
 
   return (
